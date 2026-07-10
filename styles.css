@@ -1,0 +1,293 @@
+/* Reset & Page Setup */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body, html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* 3-Color Ombre Background */
+        background: linear-gradient(135deg, #ECB0EB 0%, #987FD5 20%, #64A0F1 40%, #2371BA 60%, #4A9082 80%, #C3F79F 100%);
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Animated Bouncing Text */
+    .title-text {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        position: absolute;
+        top: 8%;
+        display: flex;
+        gap: 5px;
+    }
+    .title-text span {
+        display: inline-block;
+        animation: floatLetters 1.5s ease-in-out infinite alternate;
+    }
+    .title-text span:nth-child(even) { animation-delay: 0.3s; }
+    .title-text span:nth-child(odd) { animation-delay: 0.6s; }
+    
+    @keyframes floatLetters {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-15px); }
+    }
+
+    /* Side Panels for Flowers */
+    .side-panel {
+        position: absolute;
+        width: 150px;
+        height: 100%;
+        top: 0;
+    }
+    .left-panel { left: 0; }
+    .right-panel { right: 0; }
+
+    /* Moonflower made in CSS */
+    .moonflower {
+        position: absolute;
+        bottom: 40px;
+        right: 10px;
+        width: 100px;
+        height: 100px;
+        animation: swayFlowers 4s ease-in-out infinite alternate-reverse;
+        transform-origin: bottom center;
+    }
+  .moonflower2 {
+        position: absolute;
+        top: 400px;
+        left: 50px;
+        width: 100px;
+        height: 100px;
+        animation: swayFlowers 4s ease-in-out infinite alternate-reverse;
+        transform-origin: bottom center;
+    }
+    .moonflower3 {
+        position: absolute;
+        top: 80px;
+        right: 10px;
+        width: 100px;
+        height: 100px;
+        animation: swayFlowers 4s ease-in-out infinite alternate-reverse;
+        transform-origin: bottom center;
+    }
+  .moonflower4 {
+        position: absolute;
+        top: 400px;
+        right: 50px;
+        width: 100px;
+        height: 100px;
+        animation: swayFlowers 4s ease-in-out infinite alternate-reverse;
+        transform-origin: bottom center;
+    }
+  .moonflower5 {
+        position: absolute;
+        top: 80px;
+        right: 10px;
+        width: 100px;
+        height: 100px;
+        animation: swayFlowers 4s ease-in-out infinite alternate-reverse;
+        transform-origin: bottom center;
+    }
+ 
+
+    .petal {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #F7DDFA;
+        border-radius: 50% 50% 50% 50% / 10% 10% 90% 90%;
+        opacity: 0.9;
+        box-shadow: 0 0 10px #E58EEE;
+    }
+    .p1 { transform: rotate(0deg) translate(0, -25px); }
+    .p2 { transform: rotate(72deg) translate(0, -25px); }
+    .p3 { transform: rotate(144deg) translate(0, -25px); }
+    .p4 { transform: rotate(216deg) translate(0, -25px); }
+    .p5 { transform: rotate(288deg) translate(0, -25px); }
+    
+
+
+  
+
+/* Cake Built with CSS (Drops Tier by Tier) */
+.cake-container {
+  position: relative; /* Changed from absolute to make it easier to embed in normal pages */
+  width: 100%;
+  max-width: 300px; /* Keeps its beautiful proportions on desktop */
+  aspect-ratio: 300 / 350; /* Dynamically locks the height relative to width on mobile */
+  margin: 0 auto; /* Perfectly centres the container horizontally on the screen */
+  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.15));
+}
+
+.tier {
+  position: absolute;
+  background: #ffc0cb;
+  border-radius: 4% 4% 2% 2%;
+  left: 50%; 
+  transform: translateX(-50%); /* Base style: keeps tiers centered before animation begins */
+  animation: dropTier 1.5s ease-out both; 
+}
+
+/* Tier 1 (Top) - Highest z-index so it sits in front */
+.tier-top {
+  width: 33.33%; /* Uses percentages of container width */
+  height: 22.8%; /* Uses percentages of container height */
+  background: linear-gradient(to right, #ECE2D0, #D4CBBB 40%, #A69F92);
+  box-shadow: 
+    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 -10px 15px rgba(0, 0, 0, 0.1);
+  top: 17%; 
+  animation-delay: 0.8s;
+  z-index: 1; 
+}
+
+/* Tier 2 (Middle) - Middle z-index layer */
+.tier-middle {
+  width: 53.33%;
+  height: 25.7%;
+  background: linear-gradient(to right, #D3A588, #A9856E 40%, #957561);
+  box-shadow: 
+    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 -12px 15px rgba(0, 0, 0, 0.1),
+    0 -8px 12px rgba(0, 0, 0, 0.15);
+  top: 37%; 
+  animation-delay: 0.4s;
+  z-index: 2;
+}
+
+/* Tier 3 (Bottom) - Lowest z-index layer */
+.tier-bottom {
+  width: 80%;
+  height: 28.5%;
+  background: linear-gradient(to right, #7A6563, #635251 40%, #423837);
+  box-shadow: 
+    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 -15px 20px rgba(0, 0, 0, 0.12),
+    0 -10px 15px rgba(0, 0, 0, 0.18);
+  top: 59.5%; 
+  animation-delay: 0s;
+  z-index: 3;
+}
+
+/* Icing & Candle Details */
+.icing {
+  position: absolute;
+  width: 100%;
+  height: 18px; /* Slightly thicker frosting */
+  background: linear-gradient(to right, #ffffff, #f7f7f7 70%, #eaeaea);
+  border-radius: 12px 12px 0 0;
+  top: -10px;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 1), 0 3px 5px rgba(0, 0, 0, 0.08);
+}
+
+.icing::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 12px;
+  background: radial-gradient(circle, #ffffff 30%, transparent 35%);
+  background-size: 16px 16px;
+  top: 12px;
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Candle */
+.candle {
+  position: absolute;
+  width: 14px;
+  height: 55px;
+  /* Gives the candle realistic wax stripes and round shading */
+  background: linear-gradient(to right, #ffffff 20%, #e0e0e0 40%, #ffffff 60%, #cccccc 95%);
+  border-radius: 4px 4px 2px 2px;
+  top: -64px; 
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.15),
+    inset 0 -5px 5px rgba(0, 0, 0, 0.05);
+
+}
+
+.candle-flame {
+  position: absolute;
+  width: 16px;
+  height: 32px;
+  /* Layered color profile mimic real flame cores */
+  background: radial-gradient(circle at 50% 80%, #ffffff 10%, #fdba9d 30%, #f3bbb1 70%, transparent 90%);
+  border-radius: 50% 50% 35% 35%;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 12px rgba(255, 174, 0, 0.8)); /* Dynamic bright room bloom */
+  animation: flicker 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(0.95) rotate(-1deg); filter: drop-shadow(0 0 10px rgba(255, 174, 0, 0.7)); }
+  100% { transform: translateX(-50%) scale(1.05) rotate(1deg); filter: drop-shadow(0 0 15px rgba(255, 102, 0, 0.9)); }
+}
+
+/* Tier Drops - Fixed to preserve the baseline X centering transform */
+@keyframes dropTier {
+  0% { 
+    transform: translateX(-50%) translateY(-150%) scaleY(0); 
+    opacity: 0; 
+  }
+  60% { 
+    transform: translateX(-50%) translateY(5%) scaleY(1.05); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateX(-50%) translateY(0) scaleY(1); 
+    opacity: 1; 
+  }
+}
+  /* Cake Plate - Styled with a glassy/ceramic rim look and realistic depth */
+.cake-plate {
+  position: absolute;
+  width: 90%; /* Slightly wider than the bottom tier (80%) */
+  height: 25px;
+  background: linear-gradient(to right, #ffffff 15%, #f2f2f2 50%, #dcdcdc 85%);
+  border-radius: 50%; /* Pure ellipse for a 3D perspective angle */
+  bottom: 8%; /* Anchored to seat the bottom tier cleanly */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0; /* Sits completely underneath all cake tiers */
+  
+  /* Creates a raised glossy rim lip and a deep floor shadow underneath */
+  box-shadow: 
+    inset 0 4px 6px rgba(255, 255, 255, 1),
+    inset 0 -5px 10px rgba(0, 0, 0, 0.08),
+    0 12px 18px rgba(0, 0, 0, 0.2);
+    
+  /* Animates into view right away so the cake lands cleanly on it */
+  animation: fadeInPlate 0.3s ease-out both;
+}
+
+/* Creates a double-rim thickness effect for the plate rim edge */
+.cake-plate::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 3px;
+  left: 0;
+  background: transparent;
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Plate Entry Animation (Slightly faster drop with a crisp bounce) */
+@keyframes fadeInPlate {
+  0% { 
+    opacity: 0; 
+  }
+  100% { 
+    opacity: 1; 
+  }
+}
