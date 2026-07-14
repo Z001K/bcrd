@@ -1,44 +1,107 @@
 /* Reset & Page Setup */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        /* 3-Color Ombre Background */
-        background: linear-gradient(135deg, #ECB0EB 0%, #987FD5 20%, #64A0F1 40%, #2371BA 60%, #4A9082 80%, #C3F79F 100%);
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Animated Bouncing Text */
-    .title-text {
-        font-size: 3.5rem;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        position: absolute;
-        top: 8%;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .title-text span {
-        display: inline-block;
-        animation: floatLetters 1.5s ease-in-out infinite alternate;
-    }
-    .title-text span:nth-child(even) { animation-delay: 0.3s; }
-    .title-text span:nth-child(odd) { animation-delay: 0.6s; }
+:root {
+    /* --- LIGHT MODE THEME --- */
+    --bg-gradient: linear-gradient(135deg, #ECB0EB 0%, #987FD5 20%, #64A0F1 40%, #2371BA 60%, #4A9082 80%, #C3F79F 100%);
+    --text-color: #ffffff;
+    --text-shadow: rgba(0, 0, 0, 0.3);
     
-    @keyframes floatLetters {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-15px); }
+    /* Flower Elements */
+    --petal-bg: #F7DDFA;
+    --petal-shadow: #E58EEE;
+    --flower-center: #ffeb3b;
+    
+    /* Cake Tiers */
+    --tier-top-grad: linear-gradient(to right, #ECE2D0, #D4CBBB 40%, #A69F92);
+    --tier-mid-grad: linear-gradient(to right, #D3A588, #A9856E 40%, #957561);
+    --tier-bot-grad: linear-gradient(to right, #7A6563, #635251 40%, #423837);
+    
+    /* Accessories & Accents */
+    --icing-grad: linear-gradient(to right, #ffffff, #f7f7f7 70%, #eaeaea);
+    --icing-dots: #ffffff;
+    --candle-grad: linear-gradient(to right, #ffffff 20%, #e0e0e0 40%, #ffffff 60%, #cccccc 95%);
+    --plate-grad: linear-gradient(to right, #ffffff 15%, #f2f2f2 50%, #dcdcdc 85%);
+    
+    /* Highlights & Shadow Strengths */
+    --inset-glow: rgba(255, 255, 255, 0.5);
+    --drop-shadow: rgba(0, 0, 0, 0.15);
+    --plate-shadow-1: rgba(0, 0, 0, 0.08);
+    --plate-shadow-2: rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* --- SUBDUED DARK MODE THEME --- */
+        /* Smoothly tones down the 6-color ombre so it stays vibrant but easier on the eyes */
+        --bg-gradient: linear-gradient(135deg, #b07bb1 0%, #6f59a1 20%, #4373ba 40%, #174b80 60%, #306157 80%, #89b36b 100%);
+        --text-color: #fbf6ff;
+        --text-shadow: rgba(0, 0, 0, 0.5);
+        
+        /* Flower Elements */
+        --petal-bg: #dbaad2;
+        --petal-shadow: #b364bc;
+        --flower-center: #f1db32;
+        
+        /* Cake Tiers (Subtly richer, less reflective variants of your original colors) */
+        --tier-top-grad: linear-gradient(to right, #cfc5b3, #b8aea0 40%, #8e877a);
+        --tier-mid-grad: linear-gradient(to right, #ba8f72, #94725c 40%, #806351);
+        --tier-bot-grad: linear-gradient(to right, #695553, #544443 40%, #382e2d);
+        
+        /* Accessories & Accents */
+        --icing-grad: linear-gradient(to right, #f0f0f0, #e3e3e3 70%, #d6d6d6);
+        --icing-dots: #f0f0f0;
+        --candle-grad: linear-gradient(to right, #e0e0e0 20%, #c7c7c7 40%, #e0e0e0 60%, #b5b5b5 95%);
+        --plate-grad: linear-gradient(to right, #e8e8e8 15%, #dadada 50%, #c4c4c4 85%);
+        
+        /* Softer Highlights & Shadow Strengths */
+        --inset-glow: rgba(255, 255, 255, 0.2);
+        --drop-shadow: rgba(0, 0, 0, 0.3);
+        --plate-shadow-1: rgba(0, 0, 0, 0.15);
+        --plate-shadow-2: rgba(0, 0, 0, 0.35);
     }
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg-gradient);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.4s ease; /* Fluid transition when system mode switches */
+}
+
+/* Animated Bouncing Text */
+.title-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-shadow: 2px 2px 10px var(--text-shadow);
+    position: absolute;
+    top: 8%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.title-text span {
+    display: inline-block;
+    animation: floatLetters 1.5s ease-in-out infinite alternate;
+}
+.title-text span:nth-child(even) { animation-delay: 0.3s; }
+.title-text span:nth-child(odd) { animation-delay: 0.6s; }
+
+@keyframes floatLetters {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
 .text-flower {
     position: relative;
-    width: 1.2em;  /* Scales dynamically matching your text height */
+    width: 1.2em;  
     height: 1.2em;
     transform-origin: bottom center;
     display: inline-block;
@@ -51,18 +114,18 @@
 }
 .flower-right { 
     margin-left: 25px; 
-    animation: swayFlowers 4s ease-in-out infinite alternate-reverse; /* Out of sync looks more natural */
+    animation: swayFlowers 4s ease-in-out infinite alternate-reverse; 
 }
 
 .petal {
     position: absolute;
     width: 0.6em;
     height: 0.6em;
-    background: #F7DDFA;
+    background: var(--petal-bg);
     border-radius: 50% 50% 50% 50% / 10% 10% 90% 90%;
     opacity: 0.9;
-    box-shadow: 0 0 8px #E58EEE;
-    left: 0.3em; /* Dynamic centering metrics */
+    box-shadow: 0 0 8px var(--petal-shadow);
+    left: 0.3em; 
     top: 0.3em;
 }
 
@@ -77,7 +140,7 @@
     position: absolute;
     width: 0.24em;
     height: 0.24em;
-    background: #ffeb3b;
+    background: var(--flower-center);
     border-radius: 50%;
     top: 0.48em;
     left: 0.48em;
@@ -92,52 +155,51 @@
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
     .title-text {
-        font-size: 2.2rem; /* Shrinks the text and auto-shrinks the flowers simultaneously */
+        font-size: 2.2rem; 
         gap: 2px;
     }
     .flower-left { margin-right: 12px; }
     .flower-right { margin-left: 12px; }
 }
 
-/* Cake Built with CSS (Drops Tier by Tier) */
+/* Cake Container */
 .cake-container {
-  position: relative; /* Changed from absolute to make it easier to embed in normal pages */
+  position: relative; 
   width: 100%;
-  max-width: 300px; /* Keeps its beautiful proportions on desktop */
-  aspect-ratio: 300 / 350; /* Dynamically locks the height relative to width on mobile */
-  margin: 0 auto; /* Perfectly centres the container horizontally on the screen */
-  filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.15));
+  max-width: 300px; 
+  aspect-ratio: 300 / 350; 
+  margin: 0 auto; 
+  filter: drop-shadow(0 15px 20px var(--drop-shadow));
 }
 
 .tier {
   position: absolute;
-  background: #ffc0cb;
   border-radius: 4% 4% 2% 2%;
   left: 50%; 
-  transform: translateX(-50%); /* Base style: keeps tiers centered before animation begins */
+  transform: translateX(-50%); 
   animation: dropTier 1.5s ease-out both; 
 }
 
-/* Tier 1 (Top) - Highest z-index so it sits in front */
+/* Tier 1 (Top) */
 .tier-top {
-  width: 33.33%; /* Uses percentages of container width */
-  height: 22.8%; /* Uses percentages of container height */
-  background: linear-gradient(to right, #ECE2D0, #D4CBBB 40%, #A69F92);
+  width: 33.33%; 
+  height: 22.8%; 
+  background: var(--tier-top-grad);
   box-shadow: 
-    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 4px 4px var(--inset-glow), 
     inset 0 -10px 15px rgba(0, 0, 0, 0.1);
   top: 17%; 
   animation-delay: 0.8s;
   z-index: 1; 
 }
 
-/* Tier 2 (Middle) - Middle z-index layer */
+/* Tier 2 (Middle) */
 .tier-middle {
   width: 53.33%;
   height: 25.7%;
-  background: linear-gradient(to right, #D3A588, #A9856E 40%, #957561);
+  background: var(--tier-mid-grad);
   box-shadow: 
-    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 4px 4px var(--inset-glow), 
     inset 0 -12px 15px rgba(0, 0, 0, 0.1),
     0 -8px 12px rgba(0, 0, 0, 0.15);
   top: 37%; 
@@ -145,13 +207,13 @@
   z-index: 2;
 }
 
-/* Tier 3 (Bottom) - Lowest z-index layer */
+/* Tier 3 (Bottom) */
 .tier-bottom {
   width: 80%;
   height: 28.5%;
-  background: linear-gradient(to right, #7A6563, #635251 40%, #423837);
+  background: var(--tier-bot-grad);
   box-shadow: 
-    inset 0 4px 4px rgba(255, 255, 255, 0.5), 
+    inset 0 4px 4px var(--inset-glow), 
     inset 0 -15px 20px rgba(0, 0, 0, 0.12),
     0 -10px 15px rgba(0, 0, 0, 0.18);
   top: 59.5%; 
@@ -163,11 +225,11 @@
 .icing {
   position: absolute;
   width: 100%;
-  height: 18px; /* Slightly thicker frosting */
-  background: linear-gradient(to right, #ffffff, #f7f7f7 70%, #eaeaea);
+  height: 18px; 
+  background: var(--icing-grad);
   border-radius: 12px 12px 0 0;
   top: -10px;
-  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 1), 0 3px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 2px 2px var(--inset-glow), 0 3px 5px rgba(0, 0, 0, 0.08);
 }
 
 .icing::before {
@@ -175,7 +237,7 @@
   position: absolute;
   width: 100%;
   height: 12px;
-  background: radial-gradient(circle, #ffffff 30%, transparent 35%);
+  background: radial-gradient(circle, var(--icing-dots) 30%, transparent 35%);
   background-size: 16px 16px;
   top: 12px;
   filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
@@ -186,29 +248,26 @@
   position: absolute;
   width: 14px;
   height: 55px;
-  /* Gives the candle realistic wax stripes and round shading */
-  background: linear-gradient(to right, #ffffff 20%, #e0e0e0 40%, #ffffff 60%, #cccccc 95%);
+  background: var(--candle-grad);
   border-radius: 4px 4px 2px 2px;
   top: -64px; 
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 
-    0 4px 10px rgba(0, 0, 0, 0.15),
+    0 4px 10px var(--drop-shadow),
     inset 0 -5px 5px rgba(0, 0, 0, 0.05);
-
 }
 
 .candle-flame {
   position: absolute;
   width: 16px;
   height: 32px;
-  /* Layered color profile mimic real flame cores */
   background: radial-gradient(circle at 50% 80%, #ffffff 10%, #fdba9d 30%, #f3bbb1 70%, transparent 90%);
   border-radius: 50% 50% 35% 35%;
   top: -34px;
   left: 50%;
   transform: translateX(-50%);
-  filter: drop-shadow(0 0 12px rgba(255, 174, 0, 0.8)); /* Dynamic bright room bloom */
+  filter: drop-shadow(0 0 12px rgba(255, 174, 0, 0.8)); 
   animation: flicker 0.8s infinite alternate ease-in-out;
 }
 
@@ -217,44 +276,30 @@
   100% { transform: translateX(-50%) scale(1.05) rotate(1deg); filter: drop-shadow(0 0 15px rgba(255, 102, 0, 0.9)); }
 }
 
-/* Tier Drops - Fixed to preserve the baseline X centering transform */
 @keyframes dropTier {
-  0% { 
-    transform: translateX(-50%) translateY(-150%) scaleY(0); 
-    opacity: 0; 
-  }
-  60% { 
-    transform: translateX(-50%) translateY(5%) scaleY(1.05); 
-    opacity: 1; 
-  }
-  100% { 
-    transform: translateX(-50%) translateY(0) scaleY(1); 
-    opacity: 1; 
-  }
+  0% { transform: translateX(-50%) translateY(-150%) scaleY(0); opacity: 0; }
+  60% { transform: translateX(-50%) translateY(5%) scaleY(1.05); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(0) scaleY(1); opacity: 1; }
 }
-  /* Cake Plate - Styled with a glassy/ceramic rim look and realistic depth */
+
+/* Cake Plate */
 .cake-plate {
   position: absolute;
-  width: 90%; /* Slightly wider than the bottom tier (80%) */
+  width: 90%; 
   height: 25px;
-  background: linear-gradient(to right, #ffffff 15%, #f2f2f2 50%, #dcdcdc 85%);
-  border-radius: 50%; /* Pure ellipse for a 3D perspective angle */
-  bottom: 8%; /* Anchored to seat the bottom tier cleanly */
+  background: var(--plate-grad);
+  border-radius: 50%; 
+  bottom: 8%; 
   left: 50%;
   transform: translateX(-50%);
-  z-index: 0; /* Sits completely underneath all cake tiers */
-  
-  /* Creates a raised glossy rim lip and a deep floor shadow underneath */
+  z-index: 0; 
   box-shadow: 
-    inset 0 4px 6px rgba(255, 255, 255, 1),
-    inset 0 -5px 10px rgba(0, 0, 0, 0.08),
-    0 12px 18px rgba(0, 0, 0, 0.2);
-    
-  /* Animates into view right away so the cake lands cleanly on it */
+    inset 0 4px 6px var(--inset-glow),
+    inset 0 -5px 10px var(--plate-shadow-1),
+    0 12px 18px var(--plate-shadow-2);
   animation: fadeInPlate 0.3s ease-out both;
 }
 
-/* Creates a double-rim thickness effect for the plate rim edge */
 .cake-plate::after {
   content: '';
   position: absolute;
@@ -268,12 +313,7 @@
   pointer-events: none;
 }
 
-/* Plate Entry Animation (Slightly faster drop with a crisp bounce) */
 @keyframes fadeInPlate {
-  0% { 
-    opacity: 0; 
-  }
-  100% { 
-    opacity: 1; 
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
